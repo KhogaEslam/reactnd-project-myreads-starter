@@ -16,7 +16,7 @@ const BooksShelf = (props) => {
               <Book
                 key={book.id}
                 book={book}
-                shelf={shelf.key}
+                shelf={book.shelf}
                 moveBook={moveBook}
               />
             ))}

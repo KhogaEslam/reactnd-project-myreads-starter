@@ -9,7 +9,12 @@ const SearchResults = (props) => {
       <ol className="books-grid">
         {books &&
           books.map((book) => (
-            <Book key={book.id} book={book} shelf="none" moveBook={moveBook} />
+            <Book
+              key={book.id}
+              book={book}
+              shelf={book.shelf ? book.shelf : "none"}
+              moveBook={moveBook}
+            />
           ))}
       </ol>
     </div>

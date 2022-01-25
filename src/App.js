@@ -18,17 +18,18 @@ class BooksApp extends Component {
     searchResult: [],
   };
 
+  async getBooksAndUpdateState() {
+    const books = await BooksAPI.getAll();
+    this.setState({ books });
+  }
+
   componentDidMount = () => {
-    BooksAPI.getAll().then((books) => {
-      this.setState({ books });
-    });
+    this.getBooksAndUpdateState();
   };
 
   moveBook = (selectedBook, shelf) => {
-    BooksAPI.update(selectedBook, shelf);
-
-    BooksAPI.getAll().then((books) => {
-      this.setState({ books });
+    BooksAPI.update(selectedBook, shelf).then(() => {
+      this.getBooksAndUpdateState();
     });
   };
 
@@ -39,6 +40,15 @@ class BooksApp extends Component {
           if (res.error) {
             this.doResetSearch();
           } else {
+            res.map((bookRes) => {
+              const existingBook = this.state.books.filter(
+                (book) => book.id === bookRes.id
+              );
+              if (existingBook.length > 0 && existingBook[0].shelf) {
+                bookRes.shelf = existingBook[0].shelf;
+              }
+              return bookRes;
+            });
             this.setState({ searchResult: res });
           }
         })
