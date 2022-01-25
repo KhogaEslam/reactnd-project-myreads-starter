@@ -1,15 +1,19 @@
 import React, { Component } from "react";
 
 class SearchBooksInput extends Component {
+  timer = null;
+
   state = {
     value: "",
   };
 
   handleChange = (event) => {
     const value = event.target.value;
-    this.setState({ value }, () => {
+    clearTimeout(this.timer);
+    this.setState({ value });
+    this.timer = setTimeout(() => {
       this.props.doSearch(value);
-    });
+    }, 500);
   };
 
   render() {

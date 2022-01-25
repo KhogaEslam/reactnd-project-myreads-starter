@@ -33,7 +33,6 @@ class BooksApp extends Component {
   };
 
   doSearch = (searchKeyword) => {
-    console.log(searchKeyword)
     if (searchKeyword.length > 0) {
       BooksAPI.search(searchKeyword)
         .then((res) => {
