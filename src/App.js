@@ -15,6 +15,7 @@ class BooksApp extends Component {
 
   state = {
     books: [],
+    searchResult: [],
   };
 
   componentDidMount = () => {
@@ -31,6 +32,31 @@ class BooksApp extends Component {
     });
   };
 
+  doSearch = (searchKeyword) => {
+    console.log("hereeeeee")
+    console.log(searchKeyword)
+    if (searchKeyword.length > 0) {
+      BooksAPI.search(searchKeyword)
+        .then((res) => {
+          if (res.error) {
+            this.resetSearch();
+          } else {
+            this.setState({ searchResult: res });
+          }
+        })
+        .catch((err) => {
+          this.resetSearch();
+        });
+    } else {
+      this.resetSearch();
+    }
+  };
+
+  doResetSearch = () => {
+    console.log("here?")
+    this.setState({ searchResult: [] });
+  };
+
   render() {
     return (
       <div className="app">
@@ -43,7 +69,12 @@ class BooksApp extends Component {
             />
           </Route>
           <Route path="/search">
-            <BooksSearch books={this.state.books} moveBook={this.moveBook} />
+            <BooksSearch
+              books={this.state.searchResult}
+              moveBook={this.moveBook}
+              doSearch={this.doSearch}
+              doResetSearch={this.doResetSearch}
+            />
           </Route>
         </Switch>
       </div>

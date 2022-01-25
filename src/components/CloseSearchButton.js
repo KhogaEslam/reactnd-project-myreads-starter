@@ -1,10 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const CloseSearchButton = () => {
+const CloseSearchButton = (props) => {
+  const { doResetSearch } = props;
+
   return (
     <Link to="/">
-      <button className="close-search">Close</button>
+      <button className="close-search" onClick={doResetSearch}>
+        Close
+      </button>
     </Link>
   );
 };

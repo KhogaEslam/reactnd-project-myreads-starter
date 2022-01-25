@@ -5,6 +5,7 @@ import OpenSearchButton from "./OpenSearchButton";
 class BooksList extends Component {
   render() {
     const { booksShelves, books, moveBook } = this.props;
+
     return (
       <div className="list-books">
         <div className="list-books-title">

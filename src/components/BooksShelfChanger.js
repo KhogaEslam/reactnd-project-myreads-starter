@@ -12,6 +12,7 @@ class BooksShelfChanger extends Component {
 
   render() {
     const { shelf } = this.props;
+
     return (
       <div className="book-shelf-changer">
         <select defaultValue={shelf} onChange={this.handleChange}>

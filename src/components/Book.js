@@ -18,11 +18,7 @@ const Book = (props) => {
                 book.imageLinks.thumbnail})`,
             }}
           />
-          <BooksShelfChanger
-            book={book}
-            shelf={shelf}
-            moveBook={moveBook}
-          />
+          <BooksShelfChanger book={book} shelf={shelf} moveBook={moveBook} />
         </div>
         <div className="book-title">{book && book.title && book.title}</div>
         <div className="book-authors">

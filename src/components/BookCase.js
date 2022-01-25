@@ -3,6 +3,7 @@ import BooksShelf from "./BooksShelf";
 
 const BookCase = (props) => {
   const { booksShelves, books, moveBook } = props;
+
   return (
     <div className="list-books-content">
       <div>

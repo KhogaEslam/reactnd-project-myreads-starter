@@ -3,6 +3,7 @@ import Book from "./Book";
 
 const SearchResults = (props) => {
   const { books, moveBook } = props;
+
   return (
     <div className="search-books-results">
       <ol className="books-grid">
