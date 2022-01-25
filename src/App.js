@@ -23,16 +23,11 @@ class BooksApp extends Component {
     });
   };
 
-  moveBook = (changedBook, shelf) => {
-    const updatedBooks = this.state.books.map((book) => {
-      if (book.id === changedBook.id) {
-        book.shelf = shelf;
-      }
-      return book;
-    });
+  moveBook = (selectedBook, shelf) => {
+    BooksAPI.update(selectedBook, shelf);
 
-    this.setState({
-      books: updatedBooks,
+    BooksAPI.getAll().then((books) => {
+      this.setState({ books });
     });
   };
 
