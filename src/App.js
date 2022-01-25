@@ -33,7 +33,6 @@ class BooksApp extends Component {
   };
 
   doSearch = (searchKeyword) => {
-    console.log("hereeeeee")
     console.log(searchKeyword)
     if (searchKeyword.length > 0) {
       BooksAPI.search(searchKeyword)
@@ -53,7 +52,6 @@ class BooksApp extends Component {
   };
 
   doResetSearch = () => {
-    console.log("here?")
     this.setState({ searchResult: [] });
   };
 
