@@ -1,39 +1,62 @@
 # MyReads Project
 
-This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
+This is the final assessment project for Udacity's React Fundamentals course.
+It's a virtual personal library that a user can use to track his/her reading progress.
+The app contains two pages, first one (home page) contains three shelves of books:
 
-Of course, you are free to start this project from scratch if you wish! Just be sure to use [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.
+1- Currently Reading,
 
-## TL;DR
+2- Want to Read, and
 
-To get started developing right away:
+3- Have Read.
+
+and, the second page is to search for books.
+
+To get start the app:
 
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
+
+## TL;DR
 
 ## What You're Getting
 ```bash
 ├── CONTRIBUTING.md
 ├── README.md - This file.
-├── SEARCH_TERMS.md # The whitelisted short collection of available search terms for you to use with your app.
-├── package.json # npm package manager file. It's unlikely that you'll need to modify this.
-├── public
-│   ├── favicon.ico # React Icon, You may change if you wish.
-│   └── index.html # DO NOT MODIFY
+├── SEARCH_TERMS.md # The whitelisted short collection of available search terms.
+├── package.json # npm package manager file..
+├── public # contains all public resources
+│   ├── favicon.ico # React Icon as favicon.
+│   └── index.html # HTML root
 └── src
-    ├── App.css # Styles for your app. Feel free to customize this as you desire.
-    ├── App.js # This is the root of your app. Contains static HTML right now.
-    ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
-    ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
-    ├── icons # Helpful images for your app. Use at your discretion.
-    │   ├── add.svg
-    │   ├── arrow-back.svg
-    │   └── arrow-drop-down.svg
-    ├── index.css # Global styles. You probably won't need to change anything here.
-    └── index.js # You should not need to modify this file. It is used for DOM rendering only.
+    ├── App.js # This is the root components of the app.
+    ├── components # Contains all child components - following is the components tree.
+    |   └── BooksApp # Contains basic parent components, rounting, and functionality.
+    |       ├── BooksList # wrapper for all books categories and home page header.
+    |       │   ├── BookCase # container of all categories.
+    |       |   |   └── BooksShelf # container for a specific category.
+    |       |   |       └── Book # book details compnent.
+    |       |   |           └── BooksShelfChanger # the options menu of book.
+    |       │   └── OpenSearchButton # navigator/route to search page.
+    |       │       └── Link # predefined component as navigator.
+    |       └── BooksSearch # wrapper for search page.
+    |           ├── SearchBar # wrapper for search input and back/close search link.
+    |           |   ├── CloseSearchButton # navigator/route to home page. 
+    |           |   |   └── Link # predefined component as navigator.
+    |           |   └── SearchBooksInput # handle user input - search queries.
+    |           └── SearchResults # wrapper for search results.
+    |                   └── Book # book details compnent.
+    |                       └── BooksShelfChanger # the options menu of book.
+    ├── App.css # Styles for the app.
+    ├── App.test.js # Used for testing. Provided with Create React App.
+    ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Details for the methods are below.
+    ├── icons # Helpful images for the app.
+    │   ├── add.svg
+    │   ├── arrow-back.svg
+    │   └── arrow-drop-down.svg
+    ├── index.css # Global styles.
+    └── index.js # It is used for DOM rendering only.
 ```
-
-Remember that good React design practice is to create new JS files for each component and use import/require statements to include them where they are needed.
 
 ## Backend Server
 
