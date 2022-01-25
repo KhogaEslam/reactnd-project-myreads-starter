@@ -3,7 +3,6 @@ import Book from "./Book";
 
 const BooksShelf = (props) => {
   const { shelf, books } = props;
-  console.log(books);
   const currentBooks =
     books && books.filter((book) => book.shelf === shelf.key);
 

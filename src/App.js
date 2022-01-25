@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import BooksList from "./components/BooksList";
 import BooksSearch from "./components/BooksSearch";
 import * as BooksAPI from "./BooksAPI";
-import books from "./books";
+// import books from "./books"; // Static Data
 import "./App.css";
 
 class BooksApp extends Component {
@@ -14,14 +14,14 @@ class BooksApp extends Component {
   ];
 
   state = {
-    books: []
+    books: [],
   };
 
   componentDidMount = () => {
-    BooksAPI.getAll().then(books => {
+    BooksAPI.getAll().then((books) => {
       this.setState({ books });
     });
-  }
+  };
 
   render() {
     return (
