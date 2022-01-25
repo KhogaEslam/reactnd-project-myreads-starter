@@ -38,16 +38,16 @@ class BooksApp extends Component {
       BooksAPI.search(searchKeyword)
         .then((res) => {
           if (res.error) {
-            this.resetSearch();
+            this.doResetSearch();
           } else {
             this.setState({ searchResult: res });
           }
         })
         .catch((err) => {
-          this.resetSearch();
+          this.doResetSearch();
         });
     } else {
-      this.resetSearch();
+      this.doResetSearch();
     }
   };
 
