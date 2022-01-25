@@ -1,5 +1,5 @@
-import React from "react";
-import { Route, Link } from "react-router-dom";
+import React, { Component } from "react";
+import { Routes, Route, Link } from "react-router-dom";
 // import * as BooksAPI from './BooksAPI'
 import "./App.css";
 
@@ -7,8 +7,10 @@ class BooksApp extends Component {
   render() {
     return (
       <div className="app">
-        <Route exact path="/" component={BooksList} />
-        <Route path="/search" component={BooksSearch} />
+        <Routes>
+          <Route exact path="/" component={BooksList} />
+          <Route path="/search" component={BooksSearch} />
+        </Routes>
       </div>
     );
   }
@@ -105,6 +107,12 @@ class BooksShelfChanger extends Component {
         </select>
       </div>
     );
+  }
+}
+
+class BooksSearch extends Component {
+  render() {
+    return <div className="search-books">{/* UI code */}</div>;
   }
 }
 
