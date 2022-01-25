@@ -23,6 +23,19 @@ class BooksApp extends Component {
     });
   };
 
+  moveBook = (changedBook, shelf) => {
+    const updatedBooks = this.state.books.map((book) => {
+      if (book.id === changedBook.id) {
+        book.shelf = shelf;
+      }
+      return book;
+    });
+
+    this.setState({
+      books: updatedBooks,
+    });
+  };
+
   render() {
     return (
       <div className="app">
@@ -31,10 +44,11 @@ class BooksApp extends Component {
             <BooksList
               booksShelves={this.booksShelves}
               books={this.state.books}
+              moveBook={this.moveBook}
             />
           </Route>
           <Route path="/search">
-            <BooksSearch books={this.state.books} />
+            <BooksSearch books={this.state.books} moveBook={this.moveBook} />
           </Route>
         </Switch>
       </div>

@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import SearchBar from "./SearchBar"
-import SearchResults from "./SearchResults"
+import SearchBar from "./SearchBar";
+import SearchResults from "./SearchResults";
 
 class BooksSearch extends Component {
   render() {
-    const { books } = this.props;
+    const { books, moveBook } = this.props;
     return (
       <div className="search-books">
         <SearchBar />
-        <SearchResults books={books} />
+        <SearchResults books={books} moveBook={moveBook} />
       </div>
     );
   }

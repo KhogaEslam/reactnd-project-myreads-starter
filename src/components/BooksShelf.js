@@ -2,7 +2,7 @@ import React from "react";
 import Book from "./Book";
 
 const BooksShelf = (props) => {
-  const { shelf, books } = props;
+  const { shelf, books, moveBook } = props;
   const currentBooks =
     books && books.filter((book) => book.shelf === shelf.key);
 
@@ -13,7 +13,12 @@ const BooksShelf = (props) => {
         <ol className="books-grid">
           {currentBooks &&
             currentBooks.map((book) => (
-              <Book key={book.id} book={book} shelf={shelf.key} />
+              <Book
+                key={book.id}
+                book={book}
+                shelf={shelf.key}
+                moveBook={moveBook}
+              />
             ))}
         </ol>
       </div>

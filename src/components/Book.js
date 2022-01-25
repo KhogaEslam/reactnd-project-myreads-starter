@@ -2,7 +2,7 @@ import React from "react";
 import BooksShelfChanger from "./BooksShelfChanger";
 
 const Book = (props) => {
-  const { book, shelf } = props;
+  const { book, shelf, moveBook } = props;
 
   return (
     <li>
@@ -13,13 +13,21 @@ const Book = (props) => {
             style={{
               width: 128,
               height: 193,
-              backgroundImage: `url(${book && book.imageLinks && book.imageLinks.thumbnail})`,
+              backgroundImage: `url(${book &&
+                book.imageLinks &&
+                book.imageLinks.thumbnail})`,
             }}
           />
-          <BooksShelfChanger book={book} shelf={shelf} />
+          <BooksShelfChanger
+            book={book}
+            shelf={shelf}
+            moveBook={moveBook}
+          />
         </div>
         <div className="book-title">{book && book.title && book.title}</div>
-        <div className="book-authors">{book && book.authors && book.authors.join(', ')}</div>
+        <div className="book-authors">
+          {book && book.authors && book.authors.join(", ")}
+        </div>
       </div>
     </li>
   );
