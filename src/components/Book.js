@@ -2,7 +2,8 @@ import React from "react";
 import BooksShelfChanger from "./BooksShelfChanger";
 
 const Book = (props) => {
-  const { book } = props;
+  const { book, shelf } = props;
+
   return (
     <li>
       <div className="book">
@@ -12,14 +13,13 @@ const Book = (props) => {
             style={{
               width: 128,
               height: 193,
-              backgroundImage:
-                'url("http://books.google.com/books/content?id=PGR2Aw...")',
+              backgroundImage: `url(${book && book.imageLinks && book.imageLinks.thumbnail})`,
             }}
           />
-          <BooksShelfChanger />
+          <BooksShelfChanger book={book} shelf={shelf} />
         </div>
-        <div className="book-title">To Kill a Mockingbird</div>
-        <div className="book-authors">Harper Lee</div>
+        <div className="book-title">{book && book.title && book.title}</div>
+        <div className="book-authors">{book && book.authors && book.authors.join(', ')}</div>
       </div>
     </li>
   );
